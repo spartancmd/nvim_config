@@ -12,21 +12,19 @@ local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
 require("lazy").setup({
-	{ import = "plugins.blink" },
 	{ import = "plugins.conform" },
-	{ import = "plugins.gitsigns" },
-	{ import = "plugins.guess-indent" },
-	{ import = "plugins.lazydev" },
-	{ import = "plugins.mini" },
-	{ import = "plugins.neo-tree" },
-	{ import = "plugins.nvim-autopairs" },
-	{ import = "plugins.nvim-lspconfig" },
-	{ import = "plugins.nvim-treesitter" },
-	{ import = "plugins.telescope" },
-	{ import = "plugins.todo-comments" },
+	{ import = "plugins.mason" },
 	{ import = "plugins.tokyonight" },
+	{ import = "plugins.neo-tree" },
+	{ import = "plugins.telescope" },
+	{ import = "plugins.autopairs" },
+	{ import = "plugins.comment" },
+	{ import = "plugins.todo-comments" },
+	{ import = "plugins.guess-indent" },
+	{ import = "plugins.gitsigns" },
+	{ import = "plugins.mini" },
+	{ import = "plugins.lualine" },
 	{ import = "plugins.which-key" },
-	{ import = "plugins.toggleterm" },
 }, {
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
@@ -48,3 +46,13 @@ require("lazy").setup({
 		},
 	},
 })
+
+require("plugins.keymaps")
+
+-- setup the colorscheme
+require("tokyonight").setup({
+	style = "storm", -- seems to set the style for "tokyonight". "moon" or "storm", "night", "day"
+	transparent = false,
+	terminal_colors = true,
+})
+vim.cmd.colorscheme("tokyonight")
