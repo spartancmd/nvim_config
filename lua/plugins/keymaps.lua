@@ -1,6 +1,6 @@
 -- conform.nvim
 -- keymap to manually format
-vim.keymap.set({ "n", "v" }, "<leader>f", function()
+vim.keymap.set({ "n", "v" }, "<leader>fm", function()
 	require("conform").format({ async = true, lsp_fallback = true })
 end, { desc = "[F]ormat buffer" })
 
@@ -70,3 +70,16 @@ vim.keymap.set("n", "<leader>td", require("gitsigns").toggle_deleted, { desc = "
 vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
 vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
+
+-- debugger
+local dap = require("dap")
+vim.keymap.set("n", "<Leader>db", dap.toggle_breakpoint, {})
+vim.keymap.set("n", "<Leader>dc", dap.continue, {})
+
+-- nvim-ufo
+vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+
+-- snacks
+-- terminal
+-- vim.keymap.set("n", "<Leader>to", Snacks.terminal.open, { desc = "Open a new terminal window" })

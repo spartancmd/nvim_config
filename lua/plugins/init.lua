@@ -12,8 +12,17 @@ local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
 require("lazy").setup({
+	-- choose one dashboard
+	-- { import = "plugins.alpha-nvim" },
+
+	-- some builin managers
+	{ import = "plugins.mini" },
+	{ import = "plugins.mason" },
+	{ import = "plugins.snacks" },
+
+	{ import = "plugins.nvim-lspconfig" },
+	{ import = "plugins.nvim-dap" },
 	{ import = "plugins.conform" },
-	{ import = "plugins.lsp-config" },
 	{ import = "plugins.colortheme" },
 	{ import = "plugins.neo-tree" },
 	{ import = "plugins.telescope" },
@@ -22,12 +31,12 @@ require("lazy").setup({
 	{ import = "plugins.todo-comments" },
 	{ import = "plugins.guess-indent" },
 	{ import = "plugins.gitsigns" },
-	{ import = "plugins.mini" },
 	{ import = "plugins.lualine" },
 	{ import = "plugins.which-key" },
 	{ import = "plugins.treesitter" },
 	{ import = "plugins.completions" },
-	{ import = "plugins.dashboard-nvim" },
+	{ import = "plugins.nvim-ufo" },
+	{ import = "plugins.toggleterm" },
 }, {
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
@@ -63,4 +72,11 @@ vim.diagnostic.config({
 	underline = true,
 	update_in_insert = false,
 	severity_sort = true,
+})
+
+vim.api.nvim_create_autocmd("TermOpen", {
+	pattern = "*",
+	callback = function()
+		vim.keymap.set("n", "q", "<cmd>close<CR>", { buffer = true, silent = true })
+	end,
 })

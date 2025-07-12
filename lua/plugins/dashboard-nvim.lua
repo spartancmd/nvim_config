@@ -20,7 +20,7 @@ return {
 				week_header = { enable = false, concat = " – Have a great week!" },
 				shortcut = {
 					{ desc = "󰈞 Find File", group = "@variable", action = "Telescope find_files", key = "f" },
-					{ desc = "  New File", group = "@constant", action = "enew", key = "e" },
+					{ desc = "  New File       ", group = "@constant", action = "enew", key = "n" },
 					{ desc = " Live Grep", group = "@variable", action = "Telescope live_grep", key = "g" },
 					{ desc = " Recent Files", group = "@property", action = "Telescope oldfiles", key = "r" },
 					{ desc = "󰒲 Plugins", group = "@constant", action = "Lazy", key = "l" },

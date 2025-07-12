@@ -5,7 +5,7 @@ return {
 			-- mini.ai: better text objects selection
 			-- NOTE: key binds: va[char] - select around [char]; vi[char] - select inside [char]; yiq - yank (copy) inside quotes ""; ci[char] - change inside [char]
 			require("mini.ai").setup({
-				n_lines = 500, -- how many lines around cursor to check for text objects
+				n_lines = 1000, -- how many lines around cursor to check for text objects
 			})
 
 			-- mini.surround: add/change/delete surroundings like quotes, brackets, etc.
@@ -24,6 +24,7 @@ return {
 					suffix_last = "l", -- Suffix to search with "prev" method
 					suffix_next = "n", -- Suffix to search with "next" method
 				},
+				n_lines = 1000,
 			})
 
 			-- mini.statusline: simple statusline with mode, git branch, filename, location
@@ -55,16 +56,16 @@ return {
 			-- end
 
 			-- mini.indentscope: show indent guides and current scope
-			require("mini.indentscope").setup({
-				symbol = "│",
-				options = { try_as_border = true },
-				draw = {
-					animation = require("mini.indentscope").gen_animation.linear({
-						duration = 5,
-						unit = "total",
-					}),
-				},
-			})
+			-- require("mini.indentscope").setup({
+			-- 	symbol = "│",
+			-- 	options = { try_as_border = false },
+			-- 	draw = {
+			-- 		animation = require("mini.indentscope").gen_animation.linear({
+			-- 			duration = 5,
+			-- 			unit = "total",
+			-- 		}),
+			-- 	},
+			-- })
 		end,
 	},
 }
