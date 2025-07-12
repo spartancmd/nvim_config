@@ -10,7 +10,21 @@ return {
 
 			-- mini.surround: add/change/delete surroundings like quotes, brackets, etc.
 			-- NOTE: key-binds: sa[...] - surround add; sr[...] - surround replace; sd[...] - delete surround
-			require("mini.surround").setup()
+			require("mini.surround").setup({
+				-- Module mappings. Use `''` (empty string) to disable one.
+				mappings = {
+					add = "sa", -- Add surrounding in Normal and Visual modes
+					delete = "sd", -- Delete surrounding
+					find = "sf", -- Find surrounding (to the right)
+					find_left = "sF", -- Find surrounding (to the left)
+					highlight = "sh", -- Highlight surrounding
+					replace = "sr", -- Replace surrounding
+					update_n_lines = "sn", -- Update `n_lines`
+
+					suffix_last = "l", -- Suffix to search with "prev" method
+					suffix_next = "n", -- Suffix to search with "next" method
+				},
+			})
 
 			-- mini.statusline: simple statusline with mode, git branch, filename, location
 

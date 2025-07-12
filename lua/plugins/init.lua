@@ -13,8 +13,8 @@ rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{ import = "plugins.conform" },
-	{ import = "plugins.mason" },
-	{ import = "plugins.tokyonight" },
+	{ import = "plugins.lsp-config" },
+	{ import = "plugins.colortheme" },
 	{ import = "plugins.neo-tree" },
 	{ import = "plugins.telescope" },
 	{ import = "plugins.autopairs" },
@@ -25,6 +25,9 @@ require("lazy").setup({
 	{ import = "plugins.mini" },
 	{ import = "plugins.lualine" },
 	{ import = "plugins.which-key" },
+	{ import = "plugins.treesitter" },
+	{ import = "plugins.completions" },
+	{ import = "plugins.dashboard-nvim" },
 }, {
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
@@ -47,12 +50,17 @@ require("lazy").setup({
 	},
 })
 
+-- call setup for plugin keymaps (not all plugin related keymaps are defined there)
 require("plugins.keymaps")
 
 -- setup the colorscheme
-require("tokyonight").setup({
-	style = "storm", -- seems to set the style for "tokyonight". "moon" or "storm", "night", "day"
-	transparent = false,
-	terminal_colors = true,
-})
 vim.cmd.colorscheme("tokyonight")
+
+-- for diagnostics
+vim.diagnostic.config({
+	virtual_text = true,
+	signs = true,
+	underline = true,
+	update_in_insert = false,
+	severity_sort = true,
+})

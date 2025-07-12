@@ -86,3 +86,14 @@ vim.o.scrolloff = 10
 -- instead raise a dialog asking if you wish to save the current file(s)
 -- See `:help 'confirm'`
 vim.o.confirm = true
+--
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	pattern = "*",
+-- 	callback = function()
+-- 		vim.opt_local.foldmethod = "manual"
+-- 		vim.opt_local.foldexpr = ""
+-- 		vim.opt_local.foldenable = false
+-- 		vim.opt_local.foldlevel = 99
+-- 		vim.opt_local.foldlevelstart = 99
+-- 	end,
+-- })

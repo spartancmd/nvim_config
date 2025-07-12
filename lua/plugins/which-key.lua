@@ -1,27 +1,55 @@
-return {
+return { -- Useful plugin to show you pending keybinds.
 	"folke/which-key.nvim",
-	event = "VeryLazy", -- load only when needed
-	config = function()
-		require("which-key").setup({
-			plugins = {
-				spelling = { enabled = true },
+	event = "VimEnter", -- Sets the loading event to 'VimEnter'
+	opts = {
+		-- delay between pressing a key and opening which-key (milliseconds)
+		-- this setting is independent of vim.o.timeoutlen
+		delay = 0,
+		icons = {
+			-- set icon mappings to true if you have a Nerd Font
+			mappings = vim.g.have_nerd_font,
+			-- If you are using a Nerd Font: set icons.keys to an empty table which will use the
+			-- default which-key.nvim defined Nerd Font icons, otherwise define a string table
+			keys = vim.g.have_nerd_font and {} or {
+				Up = "<Up> ",
+				Down = "<Down> ",
+				Left = "<Left> ",
+				Right = "<Right> ",
+				C = "<C-…> ",
+				M = "<M-…> ",
+				D = "<D-…> ",
+				S = "<S-…> ",
+				CR = "<CR> ",
+				Esc = "<Esc> ",
+				ScrollWheelDown = "<ScrollWheelDown> ",
+				ScrollWheelUp = "<ScrollWheelUp> ",
+				NL = "<NL> ",
+				BS = "<BS> ",
+				Space = "<Space> ",
+				Tab = "<Tab> ",
+				F1 = "<F1>",
+				F2 = "<F2>",
+				F3 = "<F3>",
+				F4 = "<F4>",
+				F5 = "<F5>",
+				F6 = "<F6>",
+				F7 = "<F7>",
+				F8 = "<F8>",
+				F9 = "<F9>",
+				F10 = "<F10>",
+				F11 = "<F11>",
+				F12 = "<F12>",
 			},
-			window = {
-				border = "single",
-				position = "bottom",
-			},
-			layout = {
-				spacing = 6,
-			},
-		})
+		},
 
-		-- Optionally register some groups
-		local wk = require("which-key")
-		wk.register({
-			["<leader>f"] = { name = "[F]ind", _ = "which_key_ignore" },
-			["<leader>g"] = { name = "[G]it", _ = "which_key_ignore" },
-			["<leader>t"] = { name = "[T]erminal / [T]odo", _ = "which_key_ignore" },
-			["<leader>c"] = { name = "[C]ode", _ = "which_key_ignore" },
-		})
-	end,
+		-- Document existing key chains
+
+		spec = {
+			-- { "", desc = "", hidden = true, mode = { "n", "n", "n", "n" } },
+			{ "<leader>c", group = "[C]ode" },
+			{ "<leader>f", group = "[F]ind" },
+			{ "<leader>g", group = "[G]it" },
+			{ "<leader>t", group = "[T]erminal / [T]odo" },
+		},
+	},
 }

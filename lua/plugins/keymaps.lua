@@ -64,3 +64,9 @@ vim.keymap.set("n", "<leader>hD", function()
 	require("gitsigns").diffthis("~")
 end, { desc = "Diff This (Against HEAD)" })
 vim.keymap.set("n", "<leader>td", require("gitsigns").toggle_deleted, { desc = "Toggle Deleted" })
+
+-- lsp
+-- display information about the symbol under the cursor in a windown. Press 2 times to jump into that window
+vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
