@@ -80,6 +80,4 @@ vim.keymap.set("n", "<Leader>dc", dap.continue, {})
 vim.keymap.set("n", "zR", require("ufo").openAllFolds)
 vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
 
--- snacks
--- terminal
--- vim.keymap.set("n", "<Leader>to", Snacks.terminal.open, { desc = "Open a new terminal window" })
+vim.keymap.set("n", "<leader>cc", ":CopilotChat<CR>", { desc = "Open Chat with Copilot" })

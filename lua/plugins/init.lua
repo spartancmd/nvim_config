@@ -18,12 +18,12 @@ require("lazy").setup({
 	-- some builin managers
 	{ import = "plugins.mini" },
 	{ import = "plugins.mason" },
-	{ import = "plugins.snacks" },
+	{ import = "plugins.snacks" }, -- also configures dashboard
 
 	{ import = "plugins.nvim-lspconfig" },
 	{ import = "plugins.nvim-dap" },
 	{ import = "plugins.conform" },
-	{ import = "plugins.colortheme" },
+	{ import = "plugins.colorschemes" },
 	{ import = "plugins.neo-tree" },
 	{ import = "plugins.telescope" },
 	{ import = "plugins.autopairs" },
@@ -72,11 +72,4 @@ vim.diagnostic.config({
 	underline = true,
 	update_in_insert = false,
 	severity_sort = true,
-})
-
-vim.api.nvim_create_autocmd("TermOpen", {
-	pattern = "*",
-	callback = function()
-		vim.keymap.set("n", "q", "<cmd>close<CR>", { buffer = true, silent = true })
-	end,
 })

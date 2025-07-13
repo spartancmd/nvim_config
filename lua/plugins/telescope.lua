@@ -57,6 +57,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 				["ui-select"] = {
 					require("telescope.themes").get_dropdown(),
 				},
+				generic_sorter = require("mini.fuzzy").get_telescope_sorter,
 			},
 		})
 
