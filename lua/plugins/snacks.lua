@@ -132,4 +132,10 @@ return {
 			},
 		},
 	},
+	config = function(_, opts)
+		require("snacks").setup(opts)
+		vim.api.nvim_create_user_command("SnacksDashboard", function()
+			require("snacks.dashboard").open()
+		end, {})
+	end,
 }

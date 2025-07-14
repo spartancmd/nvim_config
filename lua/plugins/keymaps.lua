@@ -80,4 +80,59 @@ vim.keymap.set("n", "<Leader>dc", dap.continue, {})
 vim.keymap.set("n", "zR", require("ufo").openAllFolds)
 vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
 
-vim.keymap.set("n", "<leader>cc", ":CopilotChat<CR>", { desc = "Open Chat with Copilot" })
+-- toggleterm
+vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
+
+-- Window navigation in terminal mode
+vim.keymap.set("t", "<C-h>", [[<Cmd>wincmd h<CR>]])
+vim.keymap.set("t", "<C-j>", [[<Cmd>wincmd j<CR>]])
+vim.keymap.set("t", "<C-k>", [[<Cmd>wincmd k<CR>]])
+vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]])
+
+-- Exit terminal mode
+-- Shared terminal instance
+local Terminal = require("toggleterm.terminal").Terminal
+local shared_term = Terminal:new({
+	hidden = true,
+	direction = "horizontal",
+	float_opts = { border = "curved" },
+	on_open = function(term)
+		term:change_dir(vim.fn.getcwd()) -- ensure cwd is updated when opened
+	end,
+})
+
+-- Track current direction
+local current_direction = "horizontal"
+
+local function toggle_shared_terminal(direction)
+	if direction and current_direction ~= direction then
+		-- Change terminal direction on the fly
+		shared_term:close()
+		shared_term.direction = direction
+		current_direction = direction
+	end
+	shared_term:toggle()
+end
+
+-- Keymaps to toggle views
+vim.keymap.set("n", "<leader>tt", function()
+	toggle_shared_terminal()
+end, { desc = "Toggle Terminal" })
+vim.keymap.set("n", "<leader>th", function()
+	toggle_shared_terminal("horizontal")
+end, { desc = "Terminal Horizontal" })
+vim.keymap.set("n", "<leader>tv", function()
+	toggle_shared_terminal("vertical")
+end, { desc = "Terminal Vertical" })
+vim.keymap.set("n", "<leader>tf", function()
+	toggle_shared_terminal("float")
+end, { desc = "Terminal Float" })
+
+-- Kill terminal buffer
+vim.keymap.set("n", "<leader>tk", function()
+	local bufnr = shared_term.bufnr
+	if bufnr and vim.api.nvim_buf_is_valid(bufnr) then
+		vim.api.nvim_buf_delete(bufnr, { force = true })
+		shared_term.bufnr = nil
+	end
+end, { desc = "Kill Terminal Buffer" })

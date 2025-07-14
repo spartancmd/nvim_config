@@ -59,6 +59,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
 				},
 				generic_sorter = require("mini.fuzzy").get_telescope_sorter,
 			},
+			initial_mode = "normal",
 		})
 
 		-- Enable Telescope extensions if they are installed

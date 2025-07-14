@@ -2,10 +2,12 @@ return {
 	{
 		"mason-org/mason.nvim",
 		opts = {
-			ensure_installed = {},
+			ensure_installed = {
+				"clang-format",
+			},
 		},
-		config = function()
-			require("mason").setup()
+		config = function(_, opts)
+			require("mason").setup(opts)
 		end,
 	},
 	{
@@ -17,7 +19,7 @@ return {
 				"pyright",
 				"lua_ls",
 				"ts_ls",
-				"ast_grep",
+				"clangd",
 				"jsonls",
 				"marksman",
 			},
