@@ -11,14 +11,15 @@ end
 local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
-require("lazy").setup({ -- choose one dashboard
+require("lazy").setup({
+	-- choose one dashboard
 	-- { import = "plugins.alpha-nvim" },
 
 	-- some builin managers
 	{ import = "plugins.mini" },
 	{ import = "plugins.snacks" }, -- also configures dashboard
 
-	-- languages related stuff (LSP, Formatters...)
+	-- programming languages related stuff (LSP, Formatters...)
 	{ import = "plugins.languages" },
 
 	{ import = "plugins.nvim-dap" },
@@ -36,8 +37,6 @@ require("lazy").setup({ -- choose one dashboard
 	{ import = "plugins.nvim-ufo" },
 	{ import = "plugins.toggleterm" },
 	{ import = "plugins.leetcode" },
-	{ import = "plugins.noice" },
-	{ import = "plugins.trouble" },
 }, {
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the
