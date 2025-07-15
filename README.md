@@ -10,7 +10,8 @@ The config was designed to be as flexible as possible.
     - [C, C++](#c-c)
 
 ### Todos:
-- [] noice.nvim: remove or configure not to be annoying
+
+- [X] noice.nvim: remove or configure not to be annoying (removed + troubles.nvim)
 
 ## Getting into this config
 To remember how to use nvim, type :Tutor
@@ -29,10 +30,11 @@ Formatting is done by `conform.nvim` plugin.
 To format c and c++ as you want, you have to make .clang-format in the root folder of your OS (e.g. ~/usr/) or of the project.
 <details>
     <summary>Current example `.clang-format` </summary>
-``` 
-BasedOnStyle: LLVM
-IndentWidth: 4
-AlignAfterOpenBracket: true
+
+```yaml
+BasedOnStyle: LLVM<br>
+IndentWidth: 4  
+AlignAfterOpenBracket: true  
 ```
 </details>  
 
