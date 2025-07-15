@@ -9,7 +9,7 @@ The config was designed to be as flexible as possible.
 - [Formatting](#formatting)  
     - [C, C++](#c-c)
 
-### Todos:
+## Todos:
 
 - [X] noice.nvim: remove or configure not to be annoying (removed + troubles.nvim)
 

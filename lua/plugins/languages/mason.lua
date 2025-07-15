@@ -22,6 +22,9 @@ return {
 				"clangd",
 				"jsonls",
 				"marksman",
+				"gopls",
+				"html",
+				"cssls",
 			},
 		},
 		config = function(_, opts)
