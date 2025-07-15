@@ -1,6 +1,6 @@
 # Neovim config
 Necessary informations about setting up nvim on the current system.  
-The config was designed to be as flexible as possible.
+The config was designed to be as flexible as possible.  
 
 ## Table of contents
 - [Todos](#todos)
@@ -11,10 +11,10 @@ The config was designed to be as flexible as possible.
 
 ### Todos:
 
-- [X] noice.nvim: remove or configure not to be annoying (removed + troubles.nvim)
+- [X] noice.nvim: remove or configure not to be annoying (removed + troubles.nvim)  
 
 ## Getting into this config
-To remember how to use nvim, type :Tutor
+To remember how to use nvim, type `:Tutor`  
 Look up which plugins are there in `nvim/lua/plugins/`  
 To undestand how to use the plugin-specific and standard features, understand and memorize the defined keymaps in both `nvim/lua/core/keymaps.lua` and `nvim/lua/plugins/keymaps.lua`  
 
@@ -22,12 +22,12 @@ To undestand how to use the plugin-specific and standard features, understand an
 Plugins like mason.nvim need accessible tools to be installed and reachable.  
 >*Tools like e.g. language related commands (`$ go`, `$ python`, etc.)*  
 
-To find out which tools are missing, try to orient on informations in the error logs mentioned.
+To find out which tools are missing, try to orient on informations in the error logs showed by nvim or the corresponding manager.
 
 ## Formatting
-Formatting is done by `conform.nvim` plugin.
+Formatting is done by `conform.nvim` plugin.  
 ### C, C++
-To format c and c++ as you want, you have to make .clang-format in the root folder of your OS (e.g. ~/usr/) or of the project.
+To format c and c++ as you want, you have to create a file called `.clang-format` in the root folder of your OS (e.g. ~/usr/) or of the project.  
 <details>
     <summary>Current example `.clang-format` </summary>
 
