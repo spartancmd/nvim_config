@@ -20,7 +20,7 @@ To undestand how to use the plugin-specific and standard features, understand an
 
 ## Dependencies
 Plugins like mason.nvim need accessible tools to be installed and reachable.  
->*Tools like e.g. language related commands (`go`, `python`, etc.)*  
+>*Tools like e.g. language related commands (`$ go`, `$ python`, etc.)*  
 
 To find out which tools are missing, try to orient on informations in the error logs mentioned.
 
