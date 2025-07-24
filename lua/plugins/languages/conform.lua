@@ -11,7 +11,7 @@ return {
 				python = { "black" },
 				c = { "clang-format" },
 				cpp = { "clang-format" },
-				go = { "gofmt" },
+				-- go = { "gofmt" },
 				javascript = { "prettier" },
 				typescript = { "prettier" },
 				html = { "prettier" },

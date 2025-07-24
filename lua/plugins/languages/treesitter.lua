@@ -10,7 +10,7 @@ return {
 				"cpp",
 				"lua",
 				"python",
-				"go",
+				-- "go",
 				"javascript",
 				"typescript",
 				"html",

@@ -22,7 +22,6 @@ require("lazy").setup({
 	-- programming languages related stuff (LSP, Formatters...)
 	{ import = "plugins.languages" },
 
-	{ import = "plugins.nvim-dap" },
 	{ import = "plugins.colorschemes" },
 	{ import = "plugins.neo-tree" },
 	{ import = "plugins.telescope" },
@@ -36,7 +35,6 @@ require("lazy").setup({
 	{ import = "plugins.completions" },
 	{ import = "plugins.nvim-ufo" },
 	{ import = "plugins.toggleterm" },
-	{ import = "plugins.leetcode" },
 }, {
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the

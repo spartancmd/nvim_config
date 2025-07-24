@@ -7,7 +7,7 @@ return {
 		local servers = {
 			clangd = {},
 			pyright = {},
-			gopls = {},
+			-- gopls = {},
 			lua_ls = {
 				settings = {
 					Lua = {

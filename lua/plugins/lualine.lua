@@ -40,7 +40,7 @@ return {
 				},
 			},
 			sections = {
-				lualine_a = { { icon = "", "mode" } },
+				lualine_a = { icon = "", "mode" },
 				lualine_b = { "branch", "diff", "diagnostics" },
 				lualine_c = { "filename" },
 				lualine_x = { "encoding", "fileformat", "filetype", "lsp_status" },
