@@ -22,7 +22,7 @@ return {
 				"clangd",
 				"jsonls",
 				"marksman",
-				-- "gopls",
+				"gopls",
 				"html",
 				"cssls",
 			},

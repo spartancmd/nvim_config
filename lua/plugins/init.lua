@@ -28,7 +28,7 @@ require("lazy").setup({
 	{ import = "plugins.autopairs" },
 	{ import = "plugins.comment" },
 	{ import = "plugins.todo-comments" },
-	{ import = "plugins.guess-indent" },
+	-- { import = "plugins.guess-indent" },
 	{ import = "plugins.gitsigns" },
 	{ import = "plugins.lualine" },
 	{ import = "plugins.which-key" },
