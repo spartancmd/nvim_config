@@ -36,7 +36,7 @@ vim.o.showmode = false
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
 vim.schedule(function()
-	vim.o.clipboard = "unnamedplus"
+    vim.o.clipboard = "unnamedplus"
 end)
 
 -- Enable break indent
@@ -88,8 +88,8 @@ vim.o.scrolloff = 10
 vim.o.confirm = true
 
 if vim.loop.os_uname().sysname == "Windows_NT" then
-	vim.o.shell = "powershell"
-	vim.o.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command"
-	vim.o.shellquote = ""
-	vim.o.shellxquote = ""
+    vim.o.shell = "powershell"
+    vim.o.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command"
+    vim.o.shellquote = ""
+    vim.o.shellxquote = ""
 end

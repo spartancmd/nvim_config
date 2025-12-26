@@ -1,7 +1,7 @@
 -- conform.nvim
 -- keymap to manually format
 vim.keymap.set({ "n", "v" }, "<leader>fm", function()
-	require("conform").format({ async = true, lsp_fallback = true })
+    require("conform").format({ async = true, lsp_fallback = true })
 end, { desc = "[F]ormat buffer" })
 
 -- Neo-tree
@@ -21,32 +21,32 @@ vim.keymap.set("n", "<leader>fr", builtin.oldfiles, { desc = "[F]ind [R]ecent" }
 -- todo-comments
 -- Todo Comments
 vim.keymap.set("n", "]t", function()
-	require("todo-comments").jump_next()
+    require("todo-comments").jump_next()
 end, { desc = "Next todo comment" })
 vim.keymap.set("n", "[t", function()
-	require("todo-comments").jump_prev()
+    require("todo-comments").jump_prev()
 end, { desc = "Previous todo comment" })
 
 -- gitsigns
 -- move switch hunks
 vim.keymap.set("n", "]c", function()
-	if vim.wo.diff then
-		return "]c"
-	end
-	vim.schedule(function()
-		require("gitsigns").next_hunk()
-	end)
-	return "<Ignore>"
+    if vim.wo.diff then
+        return "]c"
+    end
+    vim.schedule(function()
+        require("gitsigns").next_hunk()
+    end)
+    return "<Ignore>"
 end, { desc = "Next Git Hunk" })
 
 vim.keymap.set("n", "[c", function()
-	if vim.wo.diff then
-		return "[c"
-	end
-	vim.schedule(function()
-		require("gitsigns").prev_hunk()
-	end)
-	return "<Ignore>"
+    if vim.wo.diff then
+        return "[c"
+    end
+    vim.schedule(function()
+        require("gitsigns").prev_hunk()
+    end)
+    return "<Ignore>"
 end, { desc = "Previous Git Hunk" })
 
 -- operate with hunks
@@ -58,12 +58,12 @@ vim.keymap.set("n", "<leader>hu", require("gitsigns").undo_stage_hunk, { desc = 
 vim.keymap.set("n", "<leader>hR", require("gitsigns").reset_buffer, { desc = "Reset Buffer" })
 vim.keymap.set("n", "<leader>hp", require("gitsigns").preview_hunk, { desc = "Preview Hunk" })
 vim.keymap.set("n", "<leader>hb", function()
-	require("gitsigns").blame_line({ full = true })
+    require("gitsigns").blame_line({ full = true })
 end, { desc = "Blame Line" })
 vim.keymap.set("n", "<leader>tb", require("gitsigns").toggle_current_line_blame, { desc = "Toggle Blame" })
 vim.keymap.set("n", "<leader>hd", require("gitsigns").diffthis, { desc = "Diff This" })
 vim.keymap.set("n", "<leader>hD", function()
-	require("gitsigns").diffthis("~")
+    require("gitsigns").diffthis("~")
 end, { desc = "Diff This (Against HEAD)" })
 vim.keymap.set("n", "<leader>td", require("gitsigns").toggle_deleted, { desc = "Toggle Deleted" })
 
@@ -71,7 +71,9 @@ vim.keymap.set("n", "<leader>td", require("gitsigns").toggle_deleted, { desc = "
 -- display information about the symbol under the cursor in a windown. Press 2 times to jump into that window
 vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, {})
 vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
+
 
 -- debugger
 local dap = require("dap")
@@ -95,46 +97,46 @@ vim.keymap.set("t", "<C-l>", [[<Cmd>wincmd l<CR>]])
 -- Shared terminal instance
 local Terminal = require("toggleterm.terminal").Terminal
 local shared_term = Terminal:new({
-	hidden = true,
-	direction = "horizontal",
-	float_opts = { border = "curved" },
-	on_open = function(term)
-		term:change_dir(vim.fn.getcwd()) -- ensure cwd is updated when opened
-	end,
+    hidden = true,
+    direction = "horizontal",
+    float_opts = { border = "curved" },
+    on_open = function(term)
+        term:change_dir(vim.fn.getcwd()) -- ensure cwd is updated when opened
+    end,
 })
 
 -- Track current direction
 local current_direction = "horizontal"
 
 local function toggle_shared_terminal(direction)
-	if direction and current_direction ~= direction then
-		-- Change terminal direction on the fly
-		shared_term:close()
-		shared_term.direction = direction
-		current_direction = direction
-	end
-	shared_term:toggle()
+    if direction and current_direction ~= direction then
+        -- Change terminal direction on the fly
+        shared_term:close()
+        shared_term.direction = direction
+        current_direction = direction
+    end
+    shared_term:toggle()
 end
 
 -- Keymaps to toggle views
 vim.keymap.set("n", "<leader>tt", function()
-	toggle_shared_terminal()
+    toggle_shared_terminal()
 end, { desc = "Toggle Terminal" })
 vim.keymap.set("n", "<leader>th", function()
-	toggle_shared_terminal("horizontal")
+    toggle_shared_terminal("horizontal")
 end, { desc = "Terminal Horizontal" })
 vim.keymap.set("n", "<leader>tv", function()
-	toggle_shared_terminal("vertical")
+    toggle_shared_terminal("vertical")
 end, { desc = "Terminal Vertical" })
 vim.keymap.set("n", "<leader>tf", function()
-	toggle_shared_terminal("float")
+    toggle_shared_terminal("float")
 end, { desc = "Terminal Float" })
 
 -- Kill terminal buffer
 vim.keymap.set("n", "<leader>tk", function()
-	local bufnr = shared_term.bufnr
-	if bufnr and vim.api.nvim_buf_is_valid(bufnr) then
-		vim.api.nvim_buf_delete(bufnr, { force = true })
-		shared_term.bufnr = nil
-	end
+    local bufnr = shared_term.bufnr
+    if bufnr and vim.api.nvim_buf_is_valid(bufnr) then
+        vim.api.nvim_buf_delete(bufnr, { force = true })
+        shared_term.bufnr = nil
+    end
 end, { desc = "Kill Terminal Buffer" })

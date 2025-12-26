@@ -12,12 +12,12 @@ local rtp = vim.opt.rtp
 rtp:prepend(lazypath)
 
 require("lazy").setup({
-    -- choose one dashboard
-    -- { import = "plugins.alpha-nvim" },
+    -- dashboard
+    { import = "plugins.alpha-nvim" },
 
     -- some builin managers
     { import = "plugins.mini" },
-    { import = "plugins.snacks" }, -- also configures dashboard
+    { import = "plugins.snacks" },
 
     -- programming languages related stuff (LSP, Formatters...)
     { import = "plugins.languages" },
@@ -25,10 +25,11 @@ require("lazy").setup({
     { import = "plugins.colorschemes" },
     { import = "plugins.neo-tree" },
     { import = "plugins.telescope" },
+    { import = "plugins.harpoon" },
     { import = "plugins.autopairs" },
     { import = "plugins.comment" },
     { import = "plugins.todo-comments" },
-    -- { import = "plugins.guess-indent" },
+    { import = "plugins.guess-indent" },
     { import = "plugins.gitsigns" },
     { import = "plugins.lualine" },
     { import = "plugins.which-key" },
@@ -61,7 +62,7 @@ require("lazy").setup({
 require("plugins.keymaps")
 
 -- setup the colorscheme
-vim.cmd.colorscheme("gruvbox")
+vim.cmd.colorscheme("catppuccin")
 
 -- for diagnostics
 vim.diagnostic.config({

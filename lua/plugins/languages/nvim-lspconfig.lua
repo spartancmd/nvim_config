@@ -6,7 +6,7 @@ return {
 
         -- NOTE: if a error/warning message appears twice, try commenting out the lsp server in here
         local servers = {
-            -- clangd = {},
+            clangd = {},
             pyright = {},
             gopls = {},
             lua_ls = {
