@@ -25,7 +25,6 @@ require("lazy").setup({
     { import = "plugins.colorschemes" },
     { import = "plugins.neo-tree" },
     { import = "plugins.telescope" },
-    { import = "plugins.harpoon" },
     { import = "plugins.autopairs" },
     { import = "plugins.comment" },
     { import = "plugins.todo-comments" },
