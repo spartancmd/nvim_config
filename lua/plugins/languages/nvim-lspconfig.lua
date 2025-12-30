@@ -2,13 +2,9 @@ return {
     "neovim/nvim-lspconfig",
     lazy = false,
     config = function()
-        local lspconfig = require("lspconfig")
-
-        -- NOTE: if a error/warning message appears twice, try commenting out the lsp server in here
         local servers = {
             clangd = {},
             pyright = {},
-            gopls = {},
             lua_ls = {
                 settings = {
                     Lua = {
@@ -24,8 +20,9 @@ return {
             marksman = {},
         }
 
-        for name, config in pairs(servers) do
-            lspconfig[name].setup(config)
+        for name, opts in pairs(servers) do
+            vim.lsp.config(name, opts)
+            vim.lsp.enable(name)
         end
     end,
 }

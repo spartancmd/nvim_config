@@ -22,7 +22,6 @@ return {
                 "clangd",
                 "jsonls",
                 "marksman",
-                "gopls",
                 "html",
                 "cssls",
             },
@@ -38,9 +37,6 @@ return {
             ensure_installed = {
                 "codelldb",
                 "python",
-                "delve",
-                "js",
-                "node2",
             },
             handlers = {
                 function(config)
