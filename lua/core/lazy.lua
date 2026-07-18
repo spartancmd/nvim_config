@@ -20,6 +20,10 @@ if not vim.uv.fs_stat(lazypath) then
     end
 end
 
-vim.opt.rtp:prepend(lazypath) -- prepend (instead of append) to give it a higher priority
+vim.opt.rtp:prepend(lazypath) -- prepend (instead of append) to give it a higher priority in runtime path (rtp)
 
-require('lazy')
+require("lazy").setup({
+    spec = {
+        { import = "plugins" }, -- loads it first via lua's require. Then lazy handles the content of init.lua
+    },
+})
