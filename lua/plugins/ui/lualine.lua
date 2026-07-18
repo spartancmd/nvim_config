@@ -25,4 +25,9 @@ return {
 			lualine_z = {},
 		},
 	},
+
+    config = function(_, opts)
+        require("lualine").setup(opts)
+        vim.o.showmode = false
+    end,
 }
