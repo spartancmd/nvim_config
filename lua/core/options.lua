@@ -3,16 +3,15 @@ local opt = vim.opt
 -- line numbers
 opt.number = true
 opt.relativenumber = true
-
 opt.signcolumn = "yes" -- reserves space left to line number for characters from e.g. gitsigns
 
--- tabulation
+-- indentation
 opt.expandtab = true -- converts tab-press into spaces
-opt.shiftwidth = 4  -- number of spaces for each indentation
+opt.shiftwidth = 4 -- number of spaces for each indentation
 opt.tabstop = 4 -- width of a \t character
 opt.smartindent = true -- auto indentation when new line
 
--- search 
+-- search
 opt.ignorecase = true -- ignore case while searching
 opt.smartcase = true -- when at least one capital, case no longer ignored
 
@@ -33,7 +32,23 @@ opt.scrolloff = 8 -- guarantees at least 8 lines above and below the cursor
 opt.mouse = "a" -- full mouse handling by neovim
 
 -- clipboard
-opt.clipboard = "unnamedplus" -- connects to the system clipboard
+vim.schedule(function()
+	vim.o.clipboard = "unnamedplus"
+end)
 
 -- undo files
 opt.undofile = true -- file history doesnt get lost after closing the file
+
+-- dialog
+vim.o.confirm = true
+
+-- key timeout
+vim.o.timeoutlen = 300 -- default 1000ms
+
+vim.g.nofsync = true
+
+-- folding 
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+vim.o.foldmethod = "manual"
