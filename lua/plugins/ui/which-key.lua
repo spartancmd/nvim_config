@@ -9,6 +9,8 @@ return {
 			{ "<leader>g", group = "Git" },
 			{ "<leader>r", group = "Rename" },
 			{ "<leader>w", group = "Window" },
+			{ "<leader>t", group = "Terminal" },
+			{ "<leader>x", group = "Diagnostics" },
 		},
 	},
 	keys = {

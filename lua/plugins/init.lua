@@ -7,4 +7,5 @@ return {
     { import = "plugins.ui" },
     { import = "plugins.git" },
     { import = "plugins.editing" },
+    { import = "plugins.diagnostics" },
 }

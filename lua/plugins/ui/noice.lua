@@ -6,5 +6,9 @@ return {
 	},
 	event = "VeryLazy",
 
-	opts = {},
+	opts = {
+		messages = {
+			enabled = false,
+		},
+	},
 }

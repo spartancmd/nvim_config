@@ -4,7 +4,39 @@ return {
 	lazy = false,
 
 	opts = {
-		input = { enabled = true },
 		indent = { enabled = true },
+		terminal = { enabled = true }, -- NOTE: use terminal for small things. It's better rather not to to fit with neovim workflow
+		statuscolumn = { enabled = true },
+		scroll = { enabled = true },
+	},
+
+	keys = {
+		{
+			"<leader>tf",
+			function()
+				Snacks.terminal.open(nil, {
+					win = { position = "float" },
+				})
+			end,
+			desc = "Floating terminal",
+		},
+		{
+			"<leader>tt",
+			function()
+				Snacks.terminal.open(nil, {
+					win = { position = "bottom" },
+				})
+			end,
+			desc = "Horizontal terminal",
+		},
+		{
+			"<leader>tv",
+			function()
+				Snacks.terminal.open(nil, {
+					win = { position = "right" },
+				})
+			end,
+			desc = "Vertical terminal",
+		},
 	},
 }
