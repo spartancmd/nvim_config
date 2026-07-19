@@ -1,59 +1,17 @@
-# Neovim config
+## System Dependencies
+Following utilities are required on this system:
+- make
+- ripgrep (by BurntSushi)
+- git
 
-Necessary informations about setting up nvim on the current system.  
-The config was designed to be as flexible as possible.
+## LSP
+This config uses following LSP setup:
+- [mason.nvim](https://github.com/mason-org/mason.nvim)
+  - installs, updates, and removes LSP servers, formatters, debuggers (DAP), linters, and other external tools
 
-## Table of contents
+- [mason-lspconfig.nvim](https://github.com/mason-org/mason-lspconfig.nvim)
+  - ensures specified LSP servers are installed
+  - automatically enables installed LSP servers
 
-- [Todos](#todos)
-- [Getting into this config](#getting-into-this-config)
-- [Dependencies](#dependencies)
-- [Formatting](#formatting)
-  - [C, C++](#c-c)
-
-## Todos:
-
-## Getting into this config
-
-To remember how to use nvim, type `:Tutor`  
-Look up which plugins are there in `nvim/lua/plugins/`  
-To undestand how to use the plugin-specific and standard features, understand and memorize the defined keymaps in both `nvim/lua/core/keymaps.lua` and `nvim/lua/plugins/keymaps.lua`
-
-## Dependencies
-
-Plugins like mason.nvim need accessible tools to be installed and reachable.
-
-> _Tools like e.g. language related commands (`$ go`, `$ python`, etc.)_
-
-To find out which tools are missing, try to orient on informations in the error logs showed by nvim or the corresponding manager.
-
-## Formatting
-
-Formatting is done by `conform.nvim` plugin.
-
-### C, C++
-
-To format c and c++ as you want, you have to create a file called `.clang-format` in the root folder of your OS (e.g. ~/usr/) or of the project.
-
-<details>
-    <summary>Current example `.clang-format` </summary>
-
-```yaml
----
-# We'll use defaults from the LLVM style, but with 4 columns indentation.
-BasedOnStyle: LLVM
-IndentWidth: 4
-ColumnLimit: 0
-
-Language: Cpp
-# Force pointers to the type for C++.
-DerivePointerAlignment: false
-PointerAlignment: Left
-AlignAfterOpenBracket: true
-AccessModifierOffset: -4
-```
-
-</details>
-
-> [!TIP]
-> To see how to handle this file you can go to [this documentation](https://clang.llvm.org/docs/ClangFormatStyleOptions.html)
+- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+  - configures individual LSP servers
