@@ -5,15 +5,15 @@ return {
 		options = {
 			globalstatus = true,
 			theme = "auto",
-			component_separators = { left = "", right = "" },
-			section_separators = { left = "", right = "" },
+			component_separators = { left = "\u{e0b9}", right = "\u{e0bf}" },
+			section_separators = { left = "\u{e0b8}", right = "\u{e0be}" },
 		},
 		sections = {
-			lualine_a = { "mode" },
+			lualine_a = { { icon = "", "mode" } },
 			lualine_b = { "branch", "diff", "diagnostics" },
 			lualine_c = { "filename" },
-			lualine_x = { "encoding", "filetype" },
-			lualine_y = { "progress" },
+			lualine_x = { "filetype" },
+			lualine_y = { "lsp_status" },
 			lualine_z = { "location" },
 		},
 		inactive_sections = {
@@ -26,8 +26,8 @@ return {
 		},
 	},
 
-    config = function(_, opts)
-        require("lualine").setup(opts)
-        vim.o.showmode = false
-    end,
+	config = function(_, opts)
+		require("lualine").setup(opts)
+		vim.o.showmode = false
+	end,
 }
