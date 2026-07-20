@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 		buf_map(event.buf, "n", "<localleader>b", runner.build_cpp, "Build")
 		buf_map(event.buf, "n", "<localleader>r", runner.run_cpp, "Run")
-		buf_map(event.buf, "n", "<localleader>c", runner.build_cpp, "Build and run")
+		buf_map(event.buf, "n", "<localleader>c", runner.build_and_run_cpp, "Build and run")
 	end,
 })
 

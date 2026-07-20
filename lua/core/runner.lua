@@ -62,7 +62,7 @@ function M.run_cpp()
 		return
 	end
 
-	term(vim.fn.shellescape(exe))
+	term(exe)
 end
 
 function M.build_and_run_cpp()
@@ -81,7 +81,7 @@ function M.run_py()
 	local file = vim.fn.expand("%:p")
 
 	-- vim.fn.shellescape(cmd) wraps the cmd-string into ''
-	term("python " .. vim.fn.shellescape(file))
+	term("python " .. file)
 end
 
 return M
