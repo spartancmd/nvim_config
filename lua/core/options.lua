@@ -47,8 +47,16 @@ vim.o.timeoutlen = 300 -- default 1000ms
 
 vim.g.nofsync = true
 
--- folding 
+-- folding
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 vim.o.foldmethod = "manual"
+
+-- when using windows, setup terminal
+if vim.uv.os_uname().sysname == "Windows_NT" then
+	vim.o.shell = "pwsh"
+	vim.o.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command"
+	vim.o.shellquote = ""
+	vim.o.shellxquote = ""
+end

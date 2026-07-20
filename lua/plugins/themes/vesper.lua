@@ -1,7 +1,7 @@
 return {
 	"datsfilipe/vesper.nvim",
 	opts = {
-		transparent = false, -- Boolean: Sets the background to transparent
+		transparent = true, -- Boolean: Sets the background to transparent
 		italics = {
 			comments = true, -- Boolean: Italicizes comments
 			keywords = true, -- Boolean: Italicizes keywords
