@@ -5,7 +5,7 @@ return {
 
 	opts = {
 		flavour = "mocha", -- latte, frappe, macchiato, mocha
-		transparent_background = false,
+		transparent_background = true,
 		term_colors = false,
 		no_italic = false, -- Force no italic
 		no_bold = false, -- Force no bold

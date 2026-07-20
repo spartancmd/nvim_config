@@ -16,13 +16,19 @@ return {
 			"css",
 			"javascript",
 			"typescript",
-        },
+			"tsx",
+			"cmake",
+		},
 
 		highlight = {
 			enable = true,
 		},
 
 		indent = {
+			enable = true,
+		},
+
+		incremental_selection = {
 			enable = true,
 		},
 	},

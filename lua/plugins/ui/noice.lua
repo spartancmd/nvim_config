@@ -7,8 +7,15 @@ return {
 	event = "VeryLazy",
 
 	opts = {
+		-- additional popups, upper right
 		messages = {
-			enabled = false,
+			enabled = true,
+		},
+
+		lsp = {
+			progress = {
+				enabled = false, -- Deaktiviert die ✓pyright Stack-Meldungen unten rechts
+			},
 		},
 	},
 }

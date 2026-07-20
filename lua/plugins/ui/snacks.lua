@@ -5,7 +5,7 @@ return {
 
 	opts = {
 		indent = { enabled = true },
-		terminal = { enabled = true }, -- NOTE: use terminal for small things. It's better rather not to to fit with neovim workflow
+		terminal = { enabled = true },
 		statuscolumn = { enabled = true },
 		scroll = { enabled = true },
 	},
@@ -15,7 +15,10 @@ return {
 			"<leader>tf",
 			function()
 				Snacks.terminal.open(nil, {
-					win = { position = "float" },
+					win = {
+						position = "float",
+						border = "rounded",
+					},
 				})
 			end,
 			desc = "Floating terminal",
