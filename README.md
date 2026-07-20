@@ -2,7 +2,7 @@
 Following utilities are required on this system:
 - make
 - ripgrep (by BurntSushi)
-- git
+- npm
 
 ## LSP
 This config uses following LSP setup:
