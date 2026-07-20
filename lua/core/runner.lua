@@ -6,6 +6,7 @@ local is_windows = vim.uv.os_uname().sysname == "Windows_NT"
 
 local function term(cmd)
 	Snacks.terminal.open(cmd, {
+		auto_close = false,
 		win = {
 			position = "bottom",
 		},
@@ -18,7 +19,7 @@ local function find_target()
 	if cached_target then
 		return cached_target
 	end
-	local cmake = vim.fn.getcwd() .. "/CMakeLists.txt"
+	local cmake = vim.fs.joinpath(vim.fn.getcwd(), "CMakeLists.txt")
 
 	if vim.fn.filereadable(cmake) == 0 then
 		return nil
@@ -28,14 +29,14 @@ local function find_target()
 		local target = line:match("^%s*add_executable%s*%(%s*([%w_-]+)")
 		if target then
 			cached_target = target
-			return target
+			return cached_target
 		end
 	end
 
-	return cached_target
+	return nil
 end
 
-local function executable()
+local function executable_name()
 	local target = find_target()
 
 	if not target then
@@ -50,11 +51,11 @@ local function executable()
 end
 
 function M.build_cpp()
-	term("cmake --build build")
+	term("cmake --build " .. BUILD_DIR)
 end
 
 function M.run_cpp()
-	local exe = executable()
+	local exe = executable_name()
 
 	if not exe then
 		vim.notify("No executable target found", vim.log.levels.ERROR)
@@ -65,14 +66,14 @@ function M.run_cpp()
 end
 
 function M.build_and_run_cpp()
-	local exe = executable()
+	local exe = executable_name()
 
 	if not exe then
 		vim.notify("No executable target found", vim.log.levels.ERROR)
 		return
 	end
 
-	term("cmake --build build && " .. vim.fn.shellescape(exe))
+	term("cmake --build " .. BUILD_DIR .. " && " .. exe)
 end
 
 function M.run_py()
