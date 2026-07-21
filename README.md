@@ -20,4 +20,4 @@ This config uses following LSP setup:
 ## TODO
 - [ ] Finish debugger for python
 - [ ] Write a better README.md
-- ~[X] Implement lazydev~
+- [X] ~Implement lazydev~
