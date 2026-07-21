@@ -1,3 +1,7 @@
+## TODO
+- [ ] Setup debugging
+- [ ] Implement lazydev
+
 ## System Dependencies
 Following utilities are required on this system:
 - make
