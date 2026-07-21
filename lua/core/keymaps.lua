@@ -71,3 +71,7 @@ map.set("n", "<leader>bl", "<cmd>buffers<CR>", {
 	desc = "List buffers",
 	silent = true,
 })
+
+vim.keymap.set("n", "<F12>", function()
+	require("dap").terminate()
+end)

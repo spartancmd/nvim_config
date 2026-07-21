@@ -62,11 +62,7 @@ return {
 		{
 			"<leader>dq",
 			function()
-				local dap = require("dap")
-
-				if dap.session() then
-					dap.terminate()
-				end
+				require("dap").terminate()
 			end,
 			desc = "Stop debugging",
 		},
@@ -74,6 +70,28 @@ return {
 
 	config = function()
 		local dap = require("dap")
+
+		vim.fn.sign_define("DapBreakpoint", {
+			text = "●",
+			texthl = "DiagnosticSignError",
+		})
+
+		vim.fn.sign_define("DapBreakpointCondition", {
+			text = "◆",
+			texthl = "DiagnosticSignWarn",
+		})
+
+		vim.fn.sign_define("DapLogPoint", {
+			text = "◉",
+			texthl = "DiagnosticSignInfo",
+		})
+
+		vim.fn.sign_define("DapStopped", {
+			text = "▶",
+			texthl = "DiagnosticSignHint",
+			linehl = "Visual",
+			numhl = "",
+		})
 
 		-- Debug configurations for each language.
 		-- For each language: which adapter and how to start a debug session

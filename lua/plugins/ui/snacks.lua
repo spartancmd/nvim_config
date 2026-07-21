@@ -7,7 +7,15 @@ return {
 		indent = { enabled = true },
 		terminal = { enabled = true },
 		statuscolumn = { enabled = true },
-		scroll = { enabled = true },
+		scroll = {
+			enabled = true,
+			animate = {
+				duration = {
+					step = 10,
+					total = 25,
+				},
+			},
+		},
 	},
 
 	keys = {

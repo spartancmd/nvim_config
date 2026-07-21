@@ -1,6 +1,3 @@
-## TODO
-- [ ] Finish debugger for python
-- [ ] Implement lazydev
 
 ## System Dependencies
 Following utilities are required on this system:
@@ -19,3 +16,8 @@ This config uses following LSP setup:
 
 - [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
   - configures individual LSP servers
+
+## TODO
+- [ ] Finish debugger for python
+- [ ] Write a better README.md
+- ~[X] Implement lazydev~
