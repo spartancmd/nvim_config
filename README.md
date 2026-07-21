@@ -1,5 +1,5 @@
 ## TODO
-- [ ] Finish setup for python
+- [ ] Finish debugger for python
 - [ ] Implement lazydev
 
 ## System Dependencies
