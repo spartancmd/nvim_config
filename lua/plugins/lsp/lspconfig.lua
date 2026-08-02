@@ -12,23 +12,23 @@ return {
 			capabilities = capabilities,
 		})
 
+		vim.lsp.enable("lua_ls")
+
 		vim.lsp.config("neocmake", {
 			capabilities = capabilities,
 		})
 
+		vim.lsp.enable("neocmake")
+
+		-- NOTE: expected clangd to be installed separately
 		vim.lsp.config("clangd", {
 			capabilities = capabilities,
 			cmd = {
 				vim.uv.os_uname().sysname == "Windows_NT" and "C:/msys64/ucrt64/bin/clangd.exe" or "clangd",
+				"--background-index",
 				"--compile-commands-dir=build",
 				"--query-driver=C:/msys64/ucrt64/bin/*",
 			},
-			root_dir = function(bufnr, on_dir)
-				on_dir(vim.fs.root(bufnr, {
-					".git",
-					"CMakeLists.txt",
-				}))
-			end,
 		})
 
 		vim.lsp.enable("clangd")
@@ -36,5 +36,7 @@ return {
 		vim.lsp.config("pyright", {
 			capabilities = capabilities,
 		})
+
+		vim.lsp.enable("pyright")
 	end,
 }

@@ -13,41 +13,34 @@ local function term(cmd)
 	})
 end
 
-local cached_target
-
-local function find_target()
-	if cached_target then
-		return cached_target
-	end
-	local cmake = vim.fs.joinpath(vim.fn.getcwd(), "CMakeLists.txt")
-
-	if vim.fn.filereadable(cmake) == 0 then
-		return nil
+local function find_default_executable()
+	if not is_windows then
+		return ""
 	end
 
-	for _, line in ipairs(vim.fn.readfile(cmake)) do
-		local target = line:match("^%s*add_executable%s*%(%s*([%w_-]+)")
-		if target then
-			cached_target = target
-			return cached_target
-		end
+	local files = vim.fn.globpath(BUILD_DIR, "*.exe", false, true)
+
+	if #files == 1 then
+		return vim.fn.fnamemodify(files[1], ":t:r")
 	end
 
-	return nil
+	return ""
 end
 
-local function executable_name()
-	local target = find_target()
+local function executable()
+	local default = find_default_executable()
 
-	if not target then
+	local name = vim.fn.input("Executable: ", default)
+
+	if name == "" then
 		return nil
 	end
 
-	if is_windows then
-		return vim.fs.joinpath(BUILD_DIR, target .. ".exe")
+	if is_windows and not name:match("%.exe$") then
+		name = name .. ".exe"
 	end
 
-	return vim.fs.joinpath(BUILD_DIR, target)
+	return BUILD_DIR .. "/" .. name
 end
 
 function M.build_cpp()
@@ -55,10 +48,9 @@ function M.build_cpp()
 end
 
 function M.run_cpp()
-	local exe = executable_name()
+	local exe = executable()
 
 	if not exe then
-		vim.notify("No executable target found", vim.log.levels.ERROR)
 		return
 	end
 
@@ -66,10 +58,9 @@ function M.run_cpp()
 end
 
 function M.build_and_run_cpp()
-	local exe = executable_name()
+	local exe = executable()
 
 	if not exe then
-		vim.notify("No executable target found", vim.log.levels.ERROR)
 		return
 	end
 
@@ -77,11 +68,9 @@ function M.build_and_run_cpp()
 end
 
 function M.run_py()
-	-- vim.fn.expand("%:p") returns filepath of the current buffer
 	local file = vim.fn.expand("%:p")
 
-	-- vim.fn.shellescape(cmd) wraps the cmd-string into ''
-	term("python " .. file)
+	term("python " .. vim.fn.shellescape(file))
 end
 
 return M

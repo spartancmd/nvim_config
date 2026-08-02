@@ -5,8 +5,12 @@ return {
 		options = {
 			globalstatus = true,
 			theme = "auto",
-			component_separators = { left = "\u{e0b9}", right = "\u{e0bf}" },
-			section_separators = { left = "\u{e0b8}", right = "\u{e0be}" },
+			component_separators = { left = "\u{e0bd}", right = "\u{e0bb}" },
+			section_separators = { left = "\u{e0bc}", right = "\u{e0ba}" },
+
+			-- inverted
+			-- component_separators = { left = "\u{e0b9}", right = "\u{e0bf}" },
+			-- section_separators = { left = "\u{e0b8}", right = "\u{e0be}" },
 		},
 		sections = {
 			lualine_a = { { icon = "", "mode" } },

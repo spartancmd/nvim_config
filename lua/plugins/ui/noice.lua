@@ -9,7 +9,7 @@ return {
 	opts = {
 		-- additional popups, upper right
 		messages = {
-			enabled = true,
+			enabled = false,
 		},
 
 		lsp = {

@@ -1,77 +1,40 @@
-local map = vim.keymap
-
 vim.g.mapleader = " "
 vim.g.maplocalleader = "," -- local leader for filetype specific keymaps
 
+local function map(mode, lhs, rhs, desc, opts)
+	opts = opts or {}
+	opts.desc = desc
+	opts.silent = true
+
+	vim.keymap.set(mode, lhs, rhs, opts)
+end
+
 -- clear search highlights
-map.set("n", "<Esc>", "<cmd>nohlsearch<CR>", {
-	desc = "Clear search highlight",
-	silent = true,
-})
+map("n", "<Esc>", "<cmd>nohlsearch<CR>", "Clear search highlight")
 
 -- window navigation
-map.set("n", "<C-h>", "<C-w>h", {
-	desc = "Go to left window",
-	silent = true,
-})
+map("n", "<C-h>", "<C-w>h", "Go to left window")
 
-map.set("n", "<C-j>", "<C-w>j", {
-	desc = "Go to lower window",
-	silent = true,
-})
+map("n", "<C-j>", "<C-w>j", "Go to lower window")
 
-map.set("n", "<C-k>", "<C-w>k", {
-	desc = "Go to upper window",
-	silent = true,
-})
+map("n", "<C-k>", "<C-w>k", "Go to upper window")
 
-map.set("n", "<C-l>", "<C-w>l", {
-	desc = "Go to right window",
-	silent = true,
-})
+map("n", "<C-l>", "<C-w>l", "Go to right window")
 
 -- window handling
-map.set("n", "<leader>ws", "<cmd>split<CR>", {
-	desc = "Horizontal split",
-	silent = true,
-})
+map("n", "<leader>ws", "<cmd>split<CR>", "Horizontal split")
 
-map.set("n", "<leader>wv", "<cmd>vsplit<CR>", {
-	desc = "Vertical split",
-	silent = true,
-})
+map("n", "<leader>wv", "<cmd>vsplit<CR>", "Vertical split")
 
-map.set("n", "<leader>wc", "<cmd>close<CR>", {
-	desc = "Close window",
-	silent = true,
-})
+map("n", "<leader>wc", "<cmd>close<CR>", "Close window")
 
-map.set("n", "<leader>wo", "<cmd>only<CR>", {
-	desc = "Close other windows",
-	silent = true,
-})
+map("n", "<leader>wo", "<cmd>only<CR>", "Close other windows")
 
 -- buffer handling
-map.set("n", "<S-l>", "<cmd>bnext<CR>", {
-	desc = "Switch to next buffer",
-	silent = true,
-})
+map("n", "<S-l>", "<cmd>bnext<CR>", "Switch to next buffer")
 
-map.set("n", "<S-h>", "<cmd>bprevious<CR>", {
-	desc = "Switch to previous buffer",
-	silent = true,
-})
+map("n", "<S-h>", "<cmd>bprevious<CR>", "Switch to previous buffer")
 
-map.set("n", "<leader>bd", "<cmd>bd<CR>", {
-	desc = "Delete buffer",
-	silent = true,
-})
+map("n", "<leader>bd", "<cmd>bd<CR>", "Delete buffer")
 
-map.set("n", "<leader>bl", "<cmd>buffers<CR>", {
-	desc = "List buffers",
-	silent = true,
-})
-
-vim.keymap.set("n", "<F12>", function()
-	require("dap").terminate()
-end)
+map("n", "<leader>bl", "<cmd>buffers<CR>", "List buffers")

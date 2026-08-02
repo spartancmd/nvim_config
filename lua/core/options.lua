@@ -43,20 +43,20 @@ opt.undofile = true -- file history doesnt get lost after closing the file
 vim.o.confirm = true
 
 -- key timeout
-vim.o.timeoutlen = 300 -- default 1000ms
+opt.timeoutlen = 300 -- default 1000ms
 
-vim.g.nofsync = true
+-- vim.g.nofsync = true
 
 -- folding
-vim.o.foldlevel = 99
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
-vim.o.foldmethod = "manual"
+opt.foldlevel = 99
+opt.foldlevelstart = 99
+opt.foldenable = true
+opt.foldmethod = "manual"
 
 -- when using windows, setup terminal
 if vim.uv.os_uname().sysname == "Windows_NT" then
-	vim.o.shell = "pwsh"
-	vim.o.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command"
-	vim.o.shellquote = ""
-	vim.o.shellxquote = ""
+	opt.shell = "pwsh"
+	opt.shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command"
+	opt.shellquote = ""
+	opt.shellxquote = ""
 end

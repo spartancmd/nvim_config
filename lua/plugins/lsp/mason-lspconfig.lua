@@ -5,7 +5,8 @@ return {
 		"neovim/nvim-lspconfig",
 	},
 	opts = {
-		automatic_enable = true,
+		-- NOTE: possible, but better to do it explicitly in lspconfig.lua
+		-- automatic_enable = true,
 		ensure_installed = {
 			"lua_ls",
 			"pyright",
