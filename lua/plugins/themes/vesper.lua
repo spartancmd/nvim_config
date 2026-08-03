@@ -1,5 +1,6 @@
 return {
 	"datsfilipe/vesper.nvim",
+	lazy = true,
 	opts = {
 		transparent = true, -- Boolean: Sets the background to transparent
 		italics = {

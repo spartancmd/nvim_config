@@ -3,5 +3,4 @@ require("core.autocmds")
 require("core.keymaps")
 require("core.lazy")
 require("core.highlights")
-
-vim.cmd.colorscheme("tokyonight-moon")
+require("core.theme")

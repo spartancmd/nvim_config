@@ -1,21 +1,21 @@
 return {
 	"lewis6991/gitsigns.nvim",
 
-    event = "VeryLazy",
+	event = "VeryLazy",
 
 	keys = {
 		-- navigation
 		{
 			"]h",
 			function()
-				require("gitsigns").next_hunk()
+				require("gitsigns").nav_hunk("next")
 			end,
 			desc = "Next hunk",
 		},
 		{
 			"[h",
 			function()
-				require("gitsigns").prev_hunk()
+				require("gitsigns").nav_hunk("prev")
 			end,
 			desc = "Previous hunk",
 		},
@@ -39,11 +39,11 @@ return {
 			changedelete = { text = "~" },
 		},
 
-        current_line_blame = true,
+		current_line_blame = true,
 
-        current_line_blame_opts = {
-            delay = 350,
-            virt_text_pos = "eol",
-        },
+		current_line_blame_opts = {
+			delay = 350,
+			virt_text_pos = "eol",
+		},
 	},
 }

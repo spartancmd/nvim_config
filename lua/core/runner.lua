@@ -5,7 +5,7 @@ local BUILD_DIR = "build"
 local is_windows = vim.uv.os_uname().sysname == "Windows_NT"
 
 local function term(cmd)
-	Snacks.terminal.open(cmd, {
+	Snacks.terminal.toggle(cmd, {
 		auto_close = false,
 		win = {
 			position = "bottom",

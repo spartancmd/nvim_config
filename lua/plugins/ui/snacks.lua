@@ -22,7 +22,7 @@ return {
 		{
 			"<leader>tf",
 			function()
-				Snacks.terminal.open(nil, {
+				Snacks.terminal.toggle(nil, {
 					win = {
 						position = "float",
 						border = "rounded",
@@ -34,7 +34,7 @@ return {
 		{
 			"<leader>tt",
 			function()
-				Snacks.terminal.open(nil, {
+				Snacks.terminal.toggle(nil, {
 					win = { position = "bottom" },
 				})
 			end,
@@ -43,7 +43,7 @@ return {
 		{
 			"<leader>tv",
 			function()
-				Snacks.terminal.open(nil, {
+				Snacks.terminal.toggle(nil, {
 					win = { position = "right" },
 				})
 			end,

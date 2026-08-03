@@ -1,8 +1,8 @@
 -- available keywords: PERF, HACK, TODO, NOTE, FIX, WARNING
 return {
-	"folke/todo-comments.nvim", -- NOTE:
+	"folke/todo-comments.nvim",
 	dependencies = { "nvim-lua/plenary.nvim" },
-    event = {"BufReadPost", "BufNewFile"},
+	event = { "BufReadPost", "BufNewFile" },
 
 	opts = {},
 
@@ -20,6 +20,11 @@ return {
 				require("todo-comments").jump_prev()
 			end,
 			desc = "Previous todo comment",
+		},
+		{
+			"<leader>ft",
+			"<cmd>TodoTelescope<cr>",
+			desc = "Find TODO comments",
 		},
 	},
 }

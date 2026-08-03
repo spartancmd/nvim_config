@@ -7,7 +7,6 @@ return {
 			{ "<leader>b", group = "Buffer" },
 			{ "<leader>f", group = "Find" },
 			{ "<leader>g", group = "Git" },
-			{ "<leader>r", group = "Rename" },
 			{ "<leader>w", group = "Window" },
 			{ "<leader>t", group = "Terminal" },
 			{ "<leader>x", group = "Diagnostics" },

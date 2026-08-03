@@ -12,9 +12,10 @@ return {
 			enabled = false,
 		},
 
+		-- deactivates progress lines bottom right
 		lsp = {
 			progress = {
-				enabled = false, -- Deaktiviert die ✓pyright Stack-Meldungen unten rechts
+				enabled = false,
 			},
 		},
 	},

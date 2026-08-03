@@ -3,6 +3,10 @@ return {
 
 	opts = {
 		timeout = 3000,
+		time_formats = {
+			notification = "%H:%M",
+			notification_history = "%FT%T",
+		},
 	},
 
 	config = function(_, opts)

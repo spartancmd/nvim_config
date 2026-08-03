@@ -1,7 +1,6 @@
 return {
 	"olivercederborg/poimandres.nvim",
-	lazy = false,
-	priority = 1000,
+	lazy = true,
 	opts = {
 		bold_vert_split = false, -- use bold vertical separators
 		dim_nc_background = false, -- dim 'non-current' window backgrounds
