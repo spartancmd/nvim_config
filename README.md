@@ -18,8 +18,9 @@ This config uses following LSP setup:
   - configures individual LSP servers
 
 ## TODO
+- [ ] Implement overseer (try replacing core/runner.lua)
 - [ ] Find alternative dap config
     - [ ] (Finish debugger for python)
 - [ ] Write a better README.md
-- [ ] Implement a theme picker
+- [X] ~Implement a theme picker~
 - [X] ~Implement lazydev~
