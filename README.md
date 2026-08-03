@@ -13,6 +13,7 @@ This configuration is built around a few simple principles:
 - **Stability** - prefer well-maintained plugins and avoid unnecessary complexity.
 - **Productivity** - include plugins only when they provide a clear benefit.
 - **Platform Independence** - the configuration should work on Linux, macOS, and Windows whenever possible.
+- **No Bloat** - avoid plugins which won't make the workflow more productive (although fun stuff may be included)
 
 ## Architecture
 
