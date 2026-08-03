@@ -1,203 +1,237 @@
 # Neovim Configuration
 
-A personal Neovim configuration focused on C++, Python and modern web development.
+A modular Neovim configuration focused on maintainability, stability, and productivity.
 
-The goal of this configuration is to provide a lightweight, modular and maintainable development environment. New plugins are only added when they solve an actual development problem.
+The configuration is organized around a small set of design principles to keep it easy to understand, extend, and maintain over time. Instead of collecting plugins, the focus is on building a clean and predictable editing environment.
 
-# Philosophy
+## Philosophy
 
-This configuration follows a few simple principles:
+This configuration is built around a few simple principles:
 
-- Prefer Neovim defaults whenever possible.
-- Keep plugins minimal.
-- Configure only what is needed.
-- Organize plugins by responsibility.
-- Build workflows instead of collecting plugins.
-- Prefer understanding over convenience.
+- **Maintainability** – every module has a clear responsibility.
+- **Modularity** – plugin configuration is isolated from the core configuration.
+- **Stability** – prefer well-maintained plugins and avoid unnecessary complexity.
+- **Productivity** – include plugins only when they provide a clear benefit.
+- **Platform Independence** – the configuration should work on Linux, macOS, and Windows whenever possible.
 
-# Directory Structure
+## Architecture
+
+The configuration is divided into two major parts:
+
+- **Core** – editor configuration that is independent of plugins.
+- **Plugins** – plugin specifications grouped by responsibility.
+
+Keeping these concerns separated makes the configuration easier to understand, maintain, and extend.
+
+### Initialization
+
+Neovim loads the configuration in the following order:
+
+1. `init.lua`
+   - Entry point of the configuration.
+
+2. `lua/core/init.lua`
+   - Loads the core modules.
+
+3. Core modules
+   - `options.lua`
+   - `autocmds.lua`
+   - `keymaps.lua`
+   - `highlights.lua`
+   - `theme.lua`
+   - `lazy.lua`
+
+4. `lua/plugins/init.lua`
+   - Registers all plugin specifications.
+
+5. `lazy.nvim`
+   - Resolves dependencies and loads plugins according to their loading conditions.
+
+The startup process intentionally initializes the editor before loading plugins. This provides a predictable environment for every plugin and keeps the core configuration independent from plugin-specific code.
+
+### Directory Layout
 
 ```text
 lua/
 ├── core/
-│   ├── autocmds.lua
-│   ├── highlights.lua
-│   ├── init.lua
-│   ├── keymaps.lua
-│   ├── lazy.lua
-│   ├── options.lua
-│   ├── runner.lua
-│   └── theme.lua
-│
 └── plugins/
-    ├── completion/
-    ├── debugging/
-    ├── diagnostics/
-    ├── editing/
-    ├── formatting/
-    ├── git/
-    ├── lsp/
-    ├── navigation/
-    ├── themes/
-    └── ui/
 ```
 
-## `core`
+#### `core/`
 
-| File | Purpose |
-|------|---------|
-| `options.lua` | General Neovim options |
-| `keymaps.lua` | Global keymaps |
-| `autocmds.lua` | Custom autocommands |
-| `highlights.lua` | Highlight overrides |
-| `runner.lua` | Custom build and run utilities |
-| `theme.lua` | Persists the selected colorscheme |
-| `lazy.lua` | Bootstraps Lazy.nvim |
+Contains editor configuration that is required before plugins are loaded.
 
-# Plugin Organization
+Modules inside this directory should remain independent from plugin-specific functionality.
 
-Plugins are grouped by responsibility instead of alphabetically.
+#### `plugins/`
 
-This makes the configuration easier to navigate and extend over time.
+Contains all plugin specifications.
 
-# Custom Features
+Plugins are grouped by their responsibility rather than by plugin name, making related functionality easier to discover and maintain.
 
-## Runner
-
-The configuration intentionally uses a custom `runner.lua` instead of Overseer.
-
-The runner is language-aware rather than project-aware.
-
-### Supported Languages
-
-- C++ (CMake)
-- Python
-
-### Features
-
-- Build C++ projects
-- Run executables
-- Build & Run
-- Execute the current Python file
-- Uses the integrated Snacks terminal
-
-Project-specific commands are exposed through **local leader keymaps**, so they are only available when relevant.
-
-## Theme Picker
-
-Themes are selected through Telescope's built-in colorscheme picker.
-
-The selected colorscheme is automatically persisted and restored on the next startup.
-
-> Some colorschemes may require adjusting the terminal color theme for the best appearance.
-
-## Oil
-
-Oil replaces the traditional file explorer.
-
-Instead of opening a tree sidebar, directories are edited as normal buffers.
-
-Open the parent directory with:
+### Plugin Architecture
 
 ```text
--
+plugins/
+├── completion/
+├── debugging/
+├── diagnostics/
+├── editing/
+├── formatting/
+├── git/
+├── lsp/
+├── navigation/
+├── themes/
+└── ui/
 ```
 
-## Telescope
+Each category represents a functional area of the editor.
 
-Telescope is used for:
+Keeping plugins grouped by responsibility instead of author or plugin name reduces coupling and makes it easier to replace or extend individual features over time.
 
-- Find Files
-- Live Grep
-- Buffers
-- Help Tags
-- Notifications
-- Theme Picker
+### Design Decisions
 
-# Development
+The project follows a small set of architectural rules:
 
-## C++
+- Every module should have a single responsibility.
+- Keep the core configuration independent from plugins.
+- Prefer one configuration file per plugin.
+- Group plugins by functionality rather than plugin name.
+- Prefer extending existing modules over introducing new ones.
+- Keep platform-specific behavior isolated whenever possible.
 
-### Requirements
+## Custom Components
 
-- CMake
-- `clangd`
-- A C/C++ compiler (`clang`, `gcc` or MSVC)
-- `make` or `ninja`
+Besides third-party plugins, this configuration contains a few custom components.
 
-> `clangd` only provides language server functionality. A compiler toolchain must still be installed separately.
+### Runner
 
-### Supported Features
+`core/runner.lua` provides a lightweight interface for compiling and running projects directly from Neovim.
+
+The goal is to support common development workflows without introducing unnecessary complexity.
+
+### Theme Management
+
+`core/theme.lua` is responsible for loading and persisting the active colorscheme.
+
+This keeps theme selection independent from the individual theme plugins.
+
+### Theme Picker
+
+The Telescope configuration includes a custom theme picker for switching between installed colorschemes interactively.
+
+Theme selection is integrated with the theme management module so that the selected theme persists across restarts.
+
+### Custom Highlights
+
+`core/highlights.lua` contains all custom highlight overrides.
+
+Keeping highlight definitions separate from the colorscheme configuration simplifies maintenance and makes theme-specific adjustments easier.
+
+## Extending the Configuration
+
+### Adding Plugins
+
+Plugins should be placed in the category that best matches their responsibility.
+
+Whenever practical:
+
+- create one configuration file per plugin;
+- configure lazy-loading when appropriate;
+- avoid overlapping functionality with existing plugins.
+
+### Language Servers
+
+Language servers and external development tools are managed through Mason.
+
+Responsibilities are divided as follows:
+
+| Component | Responsibility |
+|-----------|----------------|
+| `mason.nvim` | Installs and manages external tools |
+| `mason-lspconfig.nvim` | Ensures required language servers are available |
+| `nvim-lspconfig` | Configures individual language servers |
+
+Language-specific configuration should remain minimal unless custom behavior is required.
+
+### Themes
+
+Installed themes are located in `lua/plugins/themes`.
+
+The active theme is managed through `core/theme.lua`, while interactive theme selection is provided through Telescope.
+
+## Productivity Features
+
+The configuration focuses on a small number of tools that improve the editing workflow.
+
+### Navigation
+
+- Telescope
+- Oil
+
+### Editing
+
+- mini.nvim
+- Treesitter
+- UFO
+- Autotag
+
+### Language Support
 
 - LSP
-- Completion
-- Formatting
-- Diagnostics
-- Build & Run
-- Git integration
-- Folding
+- Blink
+- Conform
 
-Debugging support is available but still evolving.
+### Diagnostics
 
-## Python
+- Trouble
+- Inline Diagnostics
 
-### Requirements
+### Debugging
 
-- `pyright`
+- nvim-dap
+- dap-ui
 
-### Supported Features
+### User Interface
 
-- LSP
-- Completion
-- Formatting
-- Diagnostics
-- Execute current file
+- Lualine
+- Noice
+- Snacks
+- Which-Key
+- Notify
 
-## Web Development
 
-Currently used for:
+## System Dependencies
 
-- HTML
-- CSS
-- JavaScript
-- TypeScript
-- React
+The following external tools are expected to be available:
 
-### Supported Features
+| Tool | Purpose |
+|------|---------|
+| `git` | Plugin management |
+| `make` | Building native plugin dependencies |
+| `ripgrep` | Telescope live grep |
+| `npm` | Node-based language servers and tools |
 
-- LSP
-- Completion
-- Formatting
-- Diagnostics
-- AutoTag
-- Git integration
+### Platform Notes
 
-Language servers are managed through Mason.
+The configuration is intended to work across Linux, macOS, and Windows.
 
-# System Dependencies
+Platform-specific tooling is intentionally kept outside the configuration whenever possible.
 
-Required:
+On Windows, this configuration is primarily developed and tested using the MSYS2 UCRT64 environment.
 
-- `make`
-- `ripgrep`
-- `npm`
+## Conventions
 
-Depending on the languages and frameworks being used, additional external tools may be required.
+When extending this configuration, try to follow these conventions:
 
-# Design Decisions
+- Keep modules small and focused.
+- Avoid plugin-specific code inside `core/`.
+- Prefer native Neovim functionality when practical.
+- Only introduce new plugins when they solve a real problem.
+- Favor readability over clever abstractions.
 
-Some intentional design decisions:
 
-- Telescope instead of Snacks Picker.
-- Oil instead of a traditional file tree.
-- Git operations are intentionally performed through the command line.
-- Custom `runner.lua` instead of Overseer.
-- Plugin defaults are preferred over unnecessary configuration.
-- Plugins are added incrementally as new requirements arise.
+## TODO
 
-# TODO
-
-- [ ] Improve clipboard workflow
-- [ ] Think about how to manage testing
-- [ ] Revisit DAP configuration
-    - [ ] Fix python debuging crashing
+- [ ] Improve the debugging workflow.
+- [ ] Implement testing
