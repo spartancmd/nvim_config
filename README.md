@@ -8,18 +8,18 @@ The configuration is organized around a small set of design principles to keep i
 
 This configuration is built around a few simple principles:
 
-- **Maintainability** – every module has a clear responsibility.
-- **Modularity** – plugin configuration is isolated from the core configuration.
-- **Stability** – prefer well-maintained plugins and avoid unnecessary complexity.
-- **Productivity** – include plugins only when they provide a clear benefit.
-- **Platform Independence** – the configuration should work on Linux, macOS, and Windows whenever possible.
+- **Maintainability** - every module has a clear responsibility.
+- **Modularity** - plugin configuration is isolated from the core configuration.
+- **Stability** - prefer well-maintained plugins and avoid unnecessary complexity.
+- **Productivity** - include plugins only when they provide a clear benefit.
+- **Platform Independence** - the configuration should work on Linux, macOS, and Windows whenever possible.
 
 ## Architecture
 
 The configuration is divided into two major parts:
 
-- **Core** – editor configuration that is independent of plugins.
-- **Plugins** – plugin specifications grouped by responsibility.
+- **Core** - editor configuration that is independent of plugins.
+- **Plugins** - plugin specifications grouped by responsibility.
 
 Keeping these concerns separated makes the configuration easier to understand, maintain, and extend.
 
