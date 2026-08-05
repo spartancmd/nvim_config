@@ -109,13 +109,9 @@ Besides third-party plugins, this configuration contains a few custom components
 
 `core/runner.lua` provides a lightweight interface for compiling and running projects directly from Neovim.
 
-The goal is to support common development workflows without introducing unnecessary complexity.
-
 ### Theme Management
 
 `core/theme.lua` is responsible for loading and persisting the active colorscheme.
-
-This keeps theme selection independent from the individual theme plugins.
 
 ### Theme Picker
 
@@ -126,8 +122,6 @@ Theme selection is integrated with the theme management module so that the selec
 ### Custom Highlights
 
 `core/highlights.lua` contains all custom highlight overrides.
-
-Keeping highlight definitions separate from the colorscheme configuration simplifies maintenance and makes theme-specific adjustments easier.
 
 ## Extending the Configuration
 
@@ -147,11 +141,11 @@ Language servers and external development tools are managed through Mason.
 
 Responsibilities are divided as follows:
 
-| Component | Responsibility |
-|-----------|----------------|
-| `mason.nvim` | Installs and manages external tools |
+| Component              | Responsibility                                  |
+| ---------------------- | ----------------------------------------------- |
+| `mason.nvim`           | Installs and manages external tools             |
 | `mason-lspconfig.nvim` | Ensures required language servers are available |
-| `nvim-lspconfig` | Configures individual language servers |
+| `nvim-lspconfig`       | Configures individual language servers          |
 
 Language-specific configuration should remain minimal unless custom behavior is required.
 
@@ -201,23 +195,22 @@ The configuration focuses on a small number of tools that improve the editing wo
 - Which-Key
 - Notify
 
-
 ## System Dependencies
 
 The following external tools are expected to be available:
 
-| Tool | Purpose |
-|------|---------|
-| `git` | Plugin management |
-| `make` | Building native plugin dependencies |
-| `ripgrep` | Telescope live grep |
-| `npm` | Node-based language servers and tools |
+| Tool      | Purpose                               |
+| --------- | ------------------------------------- |
+| `git`     | Plugin management                     |
+| `make`    | Building native plugin dependencies   |
+| `ripgrep` | Telescope live grep                   |
+| `npm`     | Node-based language servers and tools |
 
 ### Platform Notes
 
 The configuration is intended to work across Linux, macOS, and Windows.
 
-Platform-specific tooling is intentionally kept outside the configuration whenever possible.
+Platform-specific tooling is intentionally kept outside the configuration whenever possible to ensure cross-platform ability of this config.
 
 On Windows, this configuration is primarily developed and tested using the MSYS2 UCRT64 environment.
 
@@ -230,7 +223,6 @@ When extending this configuration, try to follow these conventions:
 - Prefer native Neovim functionality when practical.
 - Only introduce new plugins when they solve a real problem.
 - Favor readability over clever abstractions.
-
 
 ## TODO
 
