@@ -1,6 +1,6 @@
 return {
     { import = "plugins.completion" },
-    { import = "plugins.debugging" },
+    -- { import = "plugins.debugging" }, -- NOTE: commented out to reduce bloat; currently no languages supported
     { import = "plugins.diagnostics" },
     { import = "plugins.editing" },
     { import = "plugins.formatting" },
