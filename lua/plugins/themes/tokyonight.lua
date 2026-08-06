@@ -1,12 +1,12 @@
 return {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
+	"folke/tokyonight.nvim",
+	lazy = false,
+	priority = 1000,
 
-    opts = {
-        style = "storm",
-        transparent = true,
-    },
+	opts = {
+		style = "storm",
+		transparent = true,
+	},
 
-    -- config not needed; opts passed automaticly
+	-- config not needed; opts passed automaticly
 }

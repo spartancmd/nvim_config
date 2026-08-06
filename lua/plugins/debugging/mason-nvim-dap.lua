@@ -1,19 +1,16 @@
 return {
-	"jay-babu/mason-nvim-dap.nvim",
-	dependencies = {
-		"mason-org/mason.nvim",
-		"mfussenegger/nvim-dap",
-	},
+    "jay-babu/mason-nvim-dap.nvim",
+    dependencies = {
+        "mason-org/mason.nvim",
+        "mfussenegger/nvim-dap",
+    },
 
-	opts = {
-		ensure_installed = {
-			"codelldb",
-			"python",
-		},
+    opts = {
+        ensure_installed = {},
 
-		handlers = {
-			-- configururation for each adapter
-			-- this is default config
-		},
-	},
+        handlers = {
+            -- configururation for each adapter
+            -- this is default config
+        },
+    },
 }

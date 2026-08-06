@@ -184,6 +184,10 @@ The configuration focuses on a small number of tools that improve the editing wo
 
 ### Debugging
 
+> [!Warning]
+> Currently not languages supported.
+> Use external CLI tools for debugging.
+
 - nvim-dap
 - dap-ui
 
