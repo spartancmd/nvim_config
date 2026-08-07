@@ -1,26 +1,37 @@
-local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.uv.fs_stat(lazypath) then
     local result = vim.system({
-        'git',
-        'clone',
-        '--branch=stable',
-        '--filter=blob:none',
-        'https://github.com/folke/lazy.nvim.git',
+        "git",
+        "clone",
+        "--branch=stable",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
         lazypath,
     }):wait()
 
     if result.code ~= 0 then
         error(
-            'Failed to clone lazy.nvim.\n\n'
-            .. 'Git exited with code ' .. result.code .. '\n\n'
-            .. 'Error message: \n'
-            .. (result.stderr or 'No error message.')
+            "Failed to clone lazy.nvim.\n\n"
+                .. "Git exited with code "
+                .. result.code
+                .. "\n\n"
+                .. "Error message: \n"
+                .. (result.stderr or "No error message.")
         )
     end
 end
 
 vim.opt.rtp:prepend(lazypath) -- prepend (instead of append) to give it a higher priority in runtime path (rtp)
+
+if vim.g.vscode then
+    require("lazy").setup({
+        spec = {
+            { import = "plugins.editing" },
+        },
+    })
+    return
+end
 
 require("lazy").setup({
     spec = {

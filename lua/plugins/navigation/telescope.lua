@@ -13,7 +13,6 @@ return {
             end,
         },
     },
-
     cmd = "Telescope",
 
     keys = {
@@ -90,6 +89,10 @@ return {
             end,
             desc = "Colorscheme picker",
         },
+    },
+
+    opts = {
+        hidden = true,
     },
 
     config = function(_, opts)

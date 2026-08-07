@@ -13,6 +13,8 @@ if vim.g.vscode then
         vim.fn.VSCodeNotify("editor.action.formatDocument")
     end)
 
+    require("core.lazy")
+
     return
 end
 
