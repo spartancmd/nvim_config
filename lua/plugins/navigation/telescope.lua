@@ -92,7 +92,11 @@ return {
     },
 
     opts = {
-        hidden = true,
+        pickers = {
+            find_files = {
+                hidden = true,
+            },
+        },
     },
 
     config = function(_, opts)
